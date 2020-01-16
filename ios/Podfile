@@ -47,6 +47,14 @@ target 'RNFirebaseStarter' do
   pod 'Fabric', '~> 1.10.2'
   pod 'Crashlytics', '~> 3.14.0'
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
+  pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
+
   target 'RNFirebaseStarterTests' do
     inherit! :search_paths
     # Pods for testing

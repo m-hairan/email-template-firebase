@@ -1,4 +1,4 @@
-package com.invertase.rnfirebasestarter;
+package com.educationapp;
 
 import androidx.multidex.MultiDexApplication;
 
@@ -8,6 +8,10 @@ import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 
 import com.facebook.react.ReactApplication;
+import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+import com.horcrux.svg.SvgPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
