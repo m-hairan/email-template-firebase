@@ -26,8 +26,8 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      countryCode : 'AX',
-      phoneCode : '',
+      countryCode : 'US',
+      phoneCode : '1',
       confirmResult: null,
       smscode:'',
       phoneNum: '',
@@ -144,13 +144,18 @@ class Login extends React.Component {
             'Success',
             'Your phone number is verified!',
             [
-              {text: 'OK', onPress: () => this.setState({phoneVerified: true})},
+              {
+                text: 'OK', 
+                onPress: () => this.setState({
+                  phoneVerified: true,
+                  loading: false
+                })
+              },
             ],
             {cancelable: false},
           )
         })
 
-      this.setState({ loading: false })
       await firebase.auth().signOut();
     } catch(error) {
       this.setState({ loading: false })
@@ -197,7 +202,7 @@ class Login extends React.Component {
               <Text style={styles.caption}>Verify your phone number</Text>
               {
                 errorMessage && !phoneVerified &&
-                <Text style={{color: '#FFC107', textAlign: 'center'}}>
+                <Text style={styles.errorLabel}>
                   {errorMessage}
                 </Text>
               }
@@ -249,7 +254,7 @@ class Login extends React.Component {
             <Text style={{color:'white',fontSize:50, marginBottom: 30, textAlign: 'center'}}>Logo</Text>
             {
               errorMessage && phoneVerified &&
-              <Text style={{color: '#FFC107', width: width - 60, textAlign: 'center'}}>
+              <Text style={[styles.errorLabel], {width: width - 60}}>
                 {errorMessage}
               </Text>
             }
@@ -387,10 +392,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 6,
     width: width - 60,
+    height:50,
     paddingLeft: 20,
     paddingRight: 20
   },
-
+  errorLabel: {
+    color: '#FFC107', 
+    textAlign: 'center',
+    marginBottom: 5
+  },
   textLabel: {
     color: 'white',
     lineHeight: 40,

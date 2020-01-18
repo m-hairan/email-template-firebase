@@ -96,7 +96,7 @@ class SignUp extends React.Component {
             </Text>
             {
               this.state.errorMessage &&
-              <Text style={{ color: '#FFC107', textAlign: 'center' }}>
+              <Text style={styles.errorLabel}>
                 {this.state.errorMessage}
               </Text>
             }
@@ -179,7 +179,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: width - 60,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    height:50,
+  },
+  errorLabel: {
+    color: '#FFC107', 
+    textAlign:'center', 
+    marginBottom:5 
   },
   messageText: {
     color: '#d00',

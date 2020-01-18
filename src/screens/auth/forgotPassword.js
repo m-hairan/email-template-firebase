@@ -62,17 +62,25 @@ class ForgotPassword extends React.Component {
         'Email Sent',
         'Please check your email...',
         [
-          {text: 'OK'},
+          {
+            text: 'OK',
+            onPress: () => this.setState({
+              loading: false
+            })
+          },
         ],
         {cancelable: false},
       )
 
-      this.setState({ loading: false })
       this.props.navigation.navigate('Login')
     } catch (error) {
       this.setState({ loading: false })
       this.setState({errorMessage: error.message})
     }
+  }
+
+  gotoLogin = () => {
+    this.props.navigation.navigate('Login')
   }
 
 
@@ -88,7 +96,7 @@ class ForgotPassword extends React.Component {
             </Text>
             {
               this.state.errorMessage &&
-              <Text style={{ color: '#FFC107', textAlign:'center' }}>
+              <Text style={styles.errorLabel}>
                 {errorMessage}
               </Text>
             }
@@ -101,6 +109,14 @@ class ForgotPassword extends React.Component {
             <TouchableOpacity onPress={this.handlePasswordReset}>
               <View style={[styles.buttonContainer]}>
                 <Text style={styles.buttonTitle}>Send Email</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={ this.gotoLogin }>
+              <View style={styles.signInButton}>
+                <Text style={styles.signinText}>
+                  Already Member? {' '}
+                </Text>
+                <Text style={{color: 'white', fontWeight: 'bold', fontSize: normalize(16)}}>Goto Sign In</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -148,7 +164,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: width - 60,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    height:50,
+  },
+  errorLabel: {
+    color: '#FFC107', 
+    textAlign:'center', 
+    marginBottom:5 
   },
   messageText: {
     color: '#d00',

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>459540787920-bgm68mq3ln2uklq2btpjh883bn7c2k6k.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.459540787920-bgm68mq3ln2uklq2btpjh883bn7c2k6k</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>459540787920-cscvh5n16i0tesmcm962e1n0men23v5q.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDWdQ-2uGo1kTUhzmWpOo_Ah8FM1ix-9pA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>459540787920</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.invertase.RNFirebaseStarter</string>
+	<key>PROJECT_ID</key>
+	<string>thegoodforall-2026b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>thegoodforall-2026b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:459540787920:ios:1049d311170a6a1af3a4d5</string>
+	<key>DATABASE_URL</key>
+	<string>https://thegoodforall-2026b.firebaseio.com</string>
+</dict>
+</plist>
