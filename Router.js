@@ -13,6 +13,8 @@ import Login from './src/screens/auth/login'
 import SignUp from './src/screens/auth/signup'
 import WelcomeNew from './src/screens/auth/welcomeNew'
 import ForgotPassword from './src/screens/auth/forgotPassword'
+import Account from './src/screens/auth/account'
+import ConnectGoogle from './src/screens/auth/connectGoogle'
 
 
 import Dashboard from './src/screens/dashboard'
@@ -31,7 +33,9 @@ const AuthStack = {
   Login: { screen: Login },
   SignUp: { screen: SignUp },
   ForgotPassword: {screen: ForgotPassword},
-  WelcomeNew: { screen: WelcomeNew }
+  WelcomeNew: { screen: WelcomeNew },
+  Account: {screen: Account},
+  ConnectGoogle: {screen: ConnectGoogle}
 }
 
 const MainStack = {

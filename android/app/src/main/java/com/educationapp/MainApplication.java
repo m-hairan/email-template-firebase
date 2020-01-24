@@ -8,6 +8,9 @@ import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 
 import com.facebook.react.ReactApplication;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
+import com.reactlibrary.googlesignin.RNGoogleSignInPackage;
+import com.rnfs.RNFSPackage;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 import com.horcrux.svg.SvgPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;

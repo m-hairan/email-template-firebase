@@ -166,7 +166,7 @@ class Dashboard extends React.Component {
       <View style={styles.screen}>
 
         <View style={styles.headerSection}>
-          <Header header={ 'Dashboard' } />
+          <Header header={ 'Dashboard' } back={null} />
         </View>
 
         <View style={styles.container}>
@@ -243,8 +243,9 @@ class Dashboard extends React.Component {
 
         <View style={styles.footerSection}>
           <Footer
-            onPressHome={ () => this.props.navigation.navigate('Dashboard') }
-            onPressMenu={ () => this.props.navigation.openDrawer() }
+            onPressMenu={() => this.props.navigation.openDrawer()}
+            onPressHome={() => this.props.navigation.navigate('Dashboard')}
+            onPressAccount={() => this.props.navigation.navigate('Account')}
           />
         </View>
 

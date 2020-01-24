@@ -12,13 +12,28 @@ import {
   Dimensions,  
   Animated
 } from 'react-native'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import firebase from 'react-native-firebase'
 import CountryPicker from 'react-native-country-picker-modal';
 import Loading from '../loading'
 import normalize from '../../helpers/sizeHelper'
 
+import * as usersActions from '../../actions/user';
+
 const { height, width } = Dimensions.get('window')
+
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    // usersActions: bindActionCreators({...usersActions}, dispatch),
+  })
+}
+
+const mapStateToProps = (state) => {
+  return ({
+  })
+}
 
 class Login extends React.Component {
   constructor(props) {
@@ -26,8 +41,8 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      countryCode : 'AX',
-      phoneCode : '',
+      countryCode : 'US',
+      phoneCode : '1',
       confirmResult: null,
       smscode:'',
       phoneNum: '',
@@ -144,13 +159,12 @@ class Login extends React.Component {
             'Success',
             'Your phone number is verified!',
             [
-              {text: 'OK', onPress: () => this.setState({phoneVerified: true})},
+              {text: 'OK', onPress: () => this.setState({phoneVerified: true, loading: false})},
             ],
             {cancelable: false},
           )
         })
 
-      this.setState({ loading: false })
       await firebase.auth().signOut();
     } catch(error) {
       this.setState({ loading: false })
@@ -170,7 +184,12 @@ class Login extends React.Component {
       await firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then(() => this.props.navigation.navigate('WelcomeNew'))
+        .then(async () => {
+          const user = firebase.auth().currentUser;
+
+          await usersActions.storeAsyncUserData(email, password);
+          this.props.navigation.navigate('ConnectGoogle')
+        })
         .catch(error => this.setState({ errorMessage: error.message }))
 
       this.setState({ loading: false }); 
@@ -483,4 +502,4 @@ const styles = StyleSheet.create({
 
 
 
-export default Login
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

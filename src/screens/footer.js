@@ -44,11 +44,13 @@ class Footer extends React.Component {
           <Image style={styles.iconImage} source={require('../../assets/icons/searcher.png')}></Image>
         </View>
         <View style={styles.column2}>
-          <Image style={styles.iconImage} source={require('../../assets/icons/add.png')}></Image>
+          <TouchableOpacity onPress={this.props.onPressMenu}>
+            <Image style={styles.iconImage} source={require('../../assets/icons/calendar.png')}></Image>
+          </TouchableOpacity>
         </View>
         <View style={styles.column4}>
-          <TouchableOpacity onPress={this.props.onPressMenu}>
-            <Image style={styles.iconImage} source={require('../../assets/icons/menu.png')}></Image>
+          <TouchableOpacity onPress={this.props.onPressAccount}>
+            <Image style={styles.iconImage} source={require('../../assets/icons/profile1.png')}></Image>
           </TouchableOpacity>
         </View>
       </View>
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: '#429321'
+    backgroundColor: rgb(87, 95, 172)
   },
   column1: {
     flex: 1,
@@ -88,8 +90,9 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   iconImage: {
-    width: normalize(24),
-    height: normalize(24)
+    width: normalize(40),
+    height: normalize(40),
+    borderRadius: 25
   }
 })
 

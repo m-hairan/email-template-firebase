@@ -31,7 +31,6 @@ const mapStateToProps = (state) => {
 }
 
 
-
 class Profile extends React.Component {
 
   constructor(props) {

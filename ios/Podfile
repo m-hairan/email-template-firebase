@@ -55,6 +55,10 @@ target 'RNFirebaseStarter' do
 
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+
   target 'RNFirebaseStarterTests' do
     inherit! :search_paths
     # Pods for testing

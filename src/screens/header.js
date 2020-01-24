@@ -30,10 +30,21 @@ class Header extends React.Component {
     }
   }
 
+  goBack() {
+    if(this.props.back)
+      this.props.navigation.navigate(this.props.back)
+  }
+
   render() {
 
     return (
       <View style={styles.container}>
+        <View style={styles.column1}>
+          <TouchableOpacity onPress={this.goBack.bind(this)}>
+            <Text style={styles.back}>{this.props.back!=null?'⇦':''}</Text>
+          </TouchableOpacity>
+        </View>
+
         <View style={styles.column1}>
           <Text style={styles.title}>{ this.props.header }</Text>
         </View>
@@ -56,22 +67,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: '#42c000',
+    height: 50,
+    backgroundColor: rgb(87, 95, 172),
     paddingTop: Platform.OS == 'ios' ? normalize(10) : 0
   },
   title: {
     fontSize: normalize(24),
     color: '#ffffff'
   },
+  back: {
+    fontSize: normalize(35),
+    width: 45,
+    color: '#ffffff'
+  },
   column1: {
-    flex: 5,
     padding: 10,
-    alignItems: 'flex-start',
   },
   column2: {
-    flex: 1,
     padding: 10,
-    alignItems: 'flex-end',
   },
   iconImage: {
     width: normalize(20),

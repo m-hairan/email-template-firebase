@@ -1,11 +1,36 @@
 import React from 'react'
-import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, NativeModules } from 'react-native'
-import { Button } from 'react-native-elements'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  ImageBackground, 
+  TextInput, 
+  Image, 
+  TouchableOpacity, 
+  Dimensions, 
+} from 'react-native'
 import firebase from 'react-native-firebase'
+
 import normalize from '../../helpers/sizeHelper'
 import Loading from '../loading'
 
+import * as usersActions from '../../actions/user';
+
 const { height, width } = Dimensions.get('window')
+
+
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    usersActions: bindActionCreators({...usersActions}, dispatch),
+  })
+}
+
+const mapStateToProps = (state) => {
+  return ({
+  })
+}
 
 
 class SignUp extends React.Component {
@@ -13,6 +38,7 @@ class SignUp extends React.Component {
     super(props)
 
     this.state = {
+      name: '',
       email: '',
       password: '',
       repeatPassword: '',
@@ -57,7 +83,7 @@ class SignUp extends React.Component {
   }
 
   handleSignUp = async () => {
-    const { email, password } = this.state
+    const { name, email, password } = this.state
 
     if (!await this.validate()) {
       return ;
@@ -69,7 +95,23 @@ class SignUp extends React.Component {
       await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
-        .then(() => this.props.navigation.navigate('Login'))
+        .then(async () => {
+          const user = firebase.auth().currentUser;
+
+          await user.updateProfile({
+            displayName: name
+          });
+
+          const dbUser = {
+            email: email,
+            name: name,
+            id: user.uid,
+          };
+
+          await this.props.usersActions.signUp(dbUser, user.uid);
+
+          this.props.navigation.navigate('Login')
+        })
         .catch(error => this.setState({ errorMessage: error.message }))
 
       this.setState({ loading: false }); 
@@ -85,7 +127,7 @@ class SignUp extends React.Component {
   }
 
   render() {
-    const {email, password, repeatPassword, loading} = this.state
+    const {name, email, password, repeatPassword, loading} = this.state
 
     return(
       <View style={styles.container}>
@@ -100,6 +142,12 @@ class SignUp extends React.Component {
                 {this.state.errorMessage}
               </Text>
             }
+            <TextInput 
+              onChangeText={(name) => this.setState({ name })}
+              style={styles.inputField}
+              value={name}
+              placeholder={"Name"}/>
+
             <TextInput 
               onChangeText={(email) => this.setState({ email })}
               style={styles.inputField}
@@ -220,5 +268,4 @@ const styles = StyleSheet.create({
 })
 
 
-
-export default SignUp
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

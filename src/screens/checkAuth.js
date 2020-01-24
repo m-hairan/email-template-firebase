@@ -5,7 +5,7 @@ import {View} from 'react-native'
 class CheckAuth extends React.Component {
   componentWillMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? 'WelcomeNew' : 'Login')
+      this.props.navigation.navigate(user ? 'Dashboard' : 'Login')
     })
   }
 

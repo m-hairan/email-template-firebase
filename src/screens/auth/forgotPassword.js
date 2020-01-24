@@ -62,12 +62,11 @@ class ForgotPassword extends React.Component {
         'Email Sent',
         'Please check your email...',
         [
-          {text: 'OK'},
+          {text: 'OK', onPress: () => this.setState({loading: false})},
         ],
         {cancelable: false},
       )
 
-      this.setState({ loading: false })
       this.props.navigation.navigate('Login')
     } catch (error) {
       this.setState({ loading: false })
