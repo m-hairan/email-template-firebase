@@ -19,7 +19,7 @@
     "hammerjs": "^2.0.8",
     "jetifier": "^1.6.4",
     "react": "16.8.6",
-    "react-native": "0.60.5",
+    "react-native": "0.62.3",
     "react-native-circular-progress": "^1.3.4",
     "react-native-country-picker-modal": "^1.10.0",
     "react-native-elements": "^1.2.7",
